@@ -35,10 +35,10 @@ func main() {
 
 	// Zero values, Go asigna variables por defecto a tipos de variables
 	// específicas cuando no se inciializan con un valor preciso
-	var a int  // por defecto a es 0
-	var b float64  // por defecto es 0
+	var a int     // por defecto a es 0
+	var b float64 // por defecto es 0
 	var c string  // por defecto ""
-	var d bool  // por defecto false
+	var d bool    // por defecto false
 	fmt.Println(a, b, c, d)
 
 	// Ejemplo
@@ -76,18 +76,76 @@ func main() {
 	// Area rectangulo
 	h_rec := 20
 	b_rec := 10
-	fmt.Println("Area Rectángulo", h_rec * b_rec)
+	fmt.Println("Area Rectángulo", h_rec*b_rec)
 	// Area de círculo
 	var r_cir float64 = 10
-	fmt.Println("Area círuclo", 3.1416 * r_cir * r_cir)  // Se debe decir que r_cir es float64
+	fmt.Println("Area círuclo", 3.1416*r_cir*r_cir) // Se debe decir que r_cir es float64
 	// Area Trapecio
 	var B_trap float64 = 20
 	var b_trap float64 = 10
 	var h_trap float64 = 2
-	fmt.Println("Area trapecio", ((b_trap * B_trap) / 2) * h_trap)
+	fmt.Println("Area trapecio", ((b_trap*B_trap)/2)*h_trap)
 
 	var xxx int = 10
 	yyy := 2.5 + 10
 	fmt.Println(xxx, yyy)
+
+	/*---------------------------TIPOS DE DATOS PRIMITIVOS---------------------------*/
+	// Numeros enteros
+	// int = Depende del OS (32 o 64 bits)
+	// int8 = 8bits = -128 a 127
+	// int16 = 16bits = -2^15 a 2^15-1
+	// int32 = 32bits = -2^31 a 2^31-1
+	// int64 = 64bits = -2^63 a 2^63-1
+
+	// Optimizar memoria cuando sabemos que el dato simpre va ser positivo
+	// u significa unsigned
+	// uint = Depende del OS (32 o 64 bits)
+	// uint8 = 8bits = 0 a 127
+	// uint16 = 16bits = 0 a 2^16-1
+	// uint32 = 32bits = 0 a 2^32-1
+	// uint64 = 64bits = 0 a 2^64-1
+
+	// Números decimales
+	// float32 = 32 bits = +/- 1.18e^-38 +/- -3.4e^38
+	// float64 = 64 bits = +/- 2.23e^-308 +/- -1.8e^308
+
+	// Textos y booleanos
+	// string = ""
+	// bool = true or false
+
+	// numeros complejos
+	// Complex64 = Real e Imaginario float32
+	// Complex128 = Real e Imaginario float64
+	// Ejemplo: c := 10 + 8i
+	complejo := 10 + 8i
+	fmt.Println(complejo)
+
+	/*---------------------------PAQUETE FMT---------------------------*/
+	helloMessage := "Hello"
+	worldMessage := "world"
+	// Println imprime y al final imrpime un salto de linea
+	fmt.Println(helloMessage, worldMessage)
+	fmt.Println(helloMessage, worldMessage)
+
+	// Printf imprime variables dentro del string
+	nombre := "Platzi"
+	cursos := 500
+	fmt.Printf("%s tiene más de %d cursos\n", nombre, cursos)
+	// %s para strings
+	// %d enteros
+	// %f flotantes
+	// %v tipo de dato no determinado
+	fmt.Printf("%v tiene más de %v cursos\n", nombre, cursos)
+
+	// Sprintf no imprimen nada, guardan un string en una variable
+	// es una forma de crear strings, lo mismo con Sprintln
+	message := fmt.Sprintf("%s tiene más de %d cursos", nombre, cursos)
+	fmt.Println(message)
+
+	// Saber el tipo de dato
+	fmt.Printf("%T\n", complejo)
+	fmt.Printf("Tipo de dato helloMessage: %T", helloMessage)
+
 
 }

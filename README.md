@@ -10,6 +10,8 @@ Las goroutines son lo que los lenguajes de programación denominan hilos. En el 
 ### Crear build de Go
 Como Go es un lenguaje compilado debe crearse el ejecutable para poder usar el programa. Para ello usamos el comando `go build main.go`, esto creará un archivo `main.exe` podemos ejecutarlo dando doble click o desde la consola con el comando `./main.exe`.
 Otra forma de ejecutarlo es usando el comando `go run main.go`, esto hará que se compile el archivo go en una carpeta temporal, se ejecute y después se borre, lo cual ayuda a temas de debug y pruebas. Este método es menos eficiente.
-### Práctica
+### Básico
 Ver la sección BÁSICO y OPERACIONES ARITMÉTICAS del archivo `main.go`. Para la sección de operaciones aritméticas es posible usar este complemento [Cómo hacer cálculos matemáticos en Go con operadores](https://www.digitalocean.com/community/tutorials/how-to-do-math-in-go-with-operators-es).
+### Paquete fmt
+El paquete fmt es una implementación I/O formateada, básicamente realizar impresiones en consola. Un ejemplo se muestra en el archivo `main.go` en la sección "PAQUETE FMT". también se puede consultar la documentación oficial en [fmt](https://pkg.go.dev/fmt).
 
