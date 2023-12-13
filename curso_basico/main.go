@@ -4,11 +4,59 @@
 package main
 
 // Módulo para implementar entradas y salidas por consola
-import "fmt"
+import (
+	"fmt"
+	"math"
+)
+
+
+func normalFunction(message string) {
+	fmt.Println(message)
+}
+
+
+// a y b son enteros, es una buena práctica
+func tripleArgument(a, b int, c string) {
+	fmt.Println(a, b, c)
+}
+
+
+// returns
+func returnValue(a int) int {
+	return a * 2
+}
+
+
+// returns multiples
+// aquí estamos diciendo que se devuelven dos valores
+// c y d que son enteros, cuando se hace el return
+// se deben devolver en ese mismo orden
+func doubleReturn(a int) (c, d int) {
+	// a es c y a * 2 es d
+	return a, a * 2
+}
+
+
+/*Reto de areas*/
+func calculateCircleArea(r float64) float64 {
+	return math.Pi * math.Pow(r, 2)
+}
+
+
+func calculateRectangleArea(a, b float64) float64 {
+	return a * b
+}
+
+
+func calculateTrapezeArea(B, b, h float64) float64 {
+	return ((B + b) * h) / 2
+}
+
 
 func main() {
 
 	/* ---------------------------BÁSICO--------------------------- */
+	fmt.Println("-----------BÁSICO-------------")
 	// Declaración de constantes
 	const pi, pi2 = 3.1416, 3.15
 	const pi3 float64 = 3.1416
@@ -47,6 +95,7 @@ func main() {
 	fmt.Println("Area del cuadrado", areaCuadrado)
 
 	/*---------------------------OPERACIONES ARITMÉTICAS---------------------------*/
+	fmt.Println("-----------OPERACIONES ARITMÉTICAS-------------")
 	var result = 0
 	// Suma
 	result = 20 + 10
@@ -91,6 +140,7 @@ func main() {
 	fmt.Println(xxx, yyy)
 
 	/*---------------------------TIPOS DE DATOS PRIMITIVOS---------------------------*/
+	fmt.Println("-----------TIPOS DE DATOS PRIMITIVOS-------------")
 	// Numeros enteros
 	// int = Depende del OS (32 o 64 bits)
 	// int8 = 8bits = -128 a 127
@@ -122,6 +172,7 @@ func main() {
 	fmt.Println(complejo)
 
 	/*---------------------------PAQUETE FMT---------------------------*/
+	fmt.Println("-----------PAQUETE FMT-------------")
 	helloMessage := "Hello"
 	worldMessage := "world"
 	// Println imprime y al final imrpime un salto de linea
@@ -145,7 +196,28 @@ func main() {
 
 	// Saber el tipo de dato
 	fmt.Printf("%T\n", complejo)
-	fmt.Printf("Tipo de dato helloMessage: %T", helloMessage)
+	fmt.Printf("Tipo de dato helloMessage: %T\n", helloMessage)
 
+	/*-------------FUNCIONES Y FUNCIONES ANÓNIMAS---------------*/
+	fmt.Println("-----------FUNCIONES Y FUNCIONES ANÓNIMAS-------------")
+	normalFunction("Holandas")
+	tripleArgument(20, 1, "c")
+	value := returnValue(20)
+	fmt.Println("Value", value)
+	value_1, value_2 := doubleReturn(20)
+	fmt.Println("Value 1:", value_1, "Value 2:", value_2)
+	// otra forma de tomar solo un valor
+	value_aux_1, _ := doubleReturn(4)
+	fmt.Println("Value aux 1:", value_aux_1)
+	// Println también devuelve cosas
+	resultadoPrint_1, resultadoPrint_2 := fmt.Println("A ver")
+	fmt.Println(resultadoPrint_1, " --- ", resultadoPrint_2)
+	// Reto de las areas
+	areaCircle := calculateCircleArea(20)
+	areaRectangle := calculateRectangleArea(10, 4)
+	areaTrapeze := calculateTrapezeArea(20, 10, 5)
+	fmt.Println("Area circulo", areaCircle)
+	fmt.Println("Area Rectangulo", areaRectangle)
+	fmt.Println("Area Trapecio", areaTrapeze)
 
 }
