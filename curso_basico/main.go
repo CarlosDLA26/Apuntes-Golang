@@ -6,7 +6,9 @@ package main
 // Módulo para implementar entradas y salidas por consola
 import (
 	"fmt"
+	"log"
 	"math"
+	"strconv"
 )
 
 
@@ -50,6 +52,11 @@ func calculateRectangleArea(a, b float64) float64 {
 
 func calculateTrapezeArea(B, b, h float64) float64 {
 	return ((B + b) * h) / 2
+}
+
+
+func esPar(n int) bool {
+	return n % 2 == 0
 }
 
 
@@ -219,5 +226,78 @@ func main() {
 	fmt.Println("Area circulo", areaCircle)
 	fmt.Println("Area Rectangulo", areaRectangle)
 	fmt.Println("Area Trapecio", areaTrapeze)
+
+	/*-------------CICLOS---------------*/
+	fmt.Println("-----------CICLOS-------------")
+	// Go solo tiene ciclos for :0
+	// for condicional
+	// i empieza en cero hasta que 9 y se suma de a uno
+	for i := 0; i < 10; i++{
+		fmt.Println(i)
+	}
+	// for while
+	fmt.Println("---------")
+	counter := 0
+	for counter < 10{
+		fmt.Println(counter)
+		counter++
+	}
+	// for forever ciclo hasta la eternidad
+	fmt.Println("---------")
+	counterForever := 0
+	for {
+		fmt.Println(counterForever)
+		counterForever++
+		// Agregamos el break para que no se ejecute hasta el infinito
+		break
+	}
+
+	fmt.Println("---------")
+	for i := 10; i > 0; i--{
+		fmt.Println(i)
+	}
+
+	// for each
+	fmt.Println("---------")
+	listaNumeros := []int{2, 4, 6, 8, 10, 12, 14, 16}
+	// normal
+	for i := range listaNumeros{
+		fmt.Println(i)
+	}
+	fmt.Println("---------")
+	for _, numero := range listaNumeros{
+		fmt.Println(numero)
+	}
+	fmt.Println("---------")
+	// como enumerate de python
+	for i, numero := range listaNumeros{
+		fmt.Printf("índice %d número %d\n", i, numero)
+	}
+
+	/*-------------CONDICIONALES---------------*/
+	fmt.Println("-----------CONDICIONALES-------------")
+	fmt.Println("and -> &&")
+	fmt.Println("or -> ||")
+	fmt.Println("not -> !")
+	// Convertir texto a número
+	value, err := strconv.Atoi("20")
+	if err != nil {
+		log.Fatal(err)  // imprimir el error en caso de que lo haya
+	}
+	fmt.Println("Value:", value)
+	fmt.Println("--------------")
+	// número par o impar
+	fmt.Println(esPar(20))
+	fmt.Println("--------------")
+	user, password := "", ""
+	fmt.Println("Usuario: ")
+	fmt.Scanf("%s\n", &user)
+	fmt.Println("Contraseña: ")
+	fmt.Scanf("%s\n", &password)
+	if user == "Carlos" && password == "123456" {
+		fmt.Println("Ingreso correcto")
+	} else {
+		fmt.Println("Ingreso NO otorgado")
+	}
 
 }
