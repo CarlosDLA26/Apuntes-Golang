@@ -60,6 +60,17 @@ func esPar(n int) bool {
 }
 
 
+// la declaración defer apila las declaracinoes
+// en este ejemplo primero se ejecuta Holandas 3
+// luego holandas 2 y luego Holandas 1
+// porque es como una estructura de datos llamda pila
+func declaracion_defer() {
+	defer fmt.Println("Holandas 1")
+	defer fmt.Println("Holandas 2")
+	fmt.Println("Holandas 3")
+}
+
+
 func main() {
 
 	/* ---------------------------BÁSICO--------------------------- */
@@ -289,15 +300,89 @@ func main() {
 	// número par o impar
 	fmt.Println(esPar(20))
 	fmt.Println("--------------")
-	user, password := "", ""
-	fmt.Println("Usuario: ")
-	fmt.Scanf("%s\n", &user)
-	fmt.Println("Contraseña: ")
-	fmt.Scanf("%s\n", &password)
-	if user == "Carlos" && password == "123456" {
-		fmt.Println("Ingreso correcto")
-	} else {
-		fmt.Println("Ingreso NO otorgado")
+	// user, password := "", ""
+	// fmt.Println("Usuario: ")
+	// fmt.Scanf("%s\n", &user)
+	// fmt.Println("Contraseña: ")
+	// fmt.Scanf("%s\n", &password)
+	// if user == "Carlos" && password == "123456" {
+	// 	fmt.Println("Ingreso correcto")
+	// } else {
+	// 	fmt.Println("Ingreso NO otorgado")
+	// }
+	// Switch normal
+	modulo := 5 % 2
+	switch modulo {
+	case 0:
+		fmt.Println("Es par")
+	case 1:
+		fmt.Println("Es impar")
+	default:
+		fmt.Println("Ni idea que será esa mierda")
 	}
+
+	// Switch con la variable dentro
+	switch modulo = 4 % 2; modulo {
+	case 0:
+		fmt.Println("Es par")
+	case 1:
+		fmt.Println("Es impar")
+	default:
+		fmt.Println("Ni idea que será esa mierda")
+	}
+
+	// Switch sin condición
+	value_switch := 200
+	switch {
+	case value_switch > 150:
+		fmt.Println("Mayor que 150")
+	case value < 0:
+		fmt.Println("Menor que 0")
+	default:
+		fmt.Println("Sin condición")
+	}
+
+	// defer
+	// La palabra clave defer sirve para decirle a Go
+	// que antes de que el programa termine, ejecute las
+	// instrucciones con ella
+	declaracion_defer()
+
+	/*-------------SLICES Y LISTAS---------------*/
+	fmt.Println("-----------LISTAS-------------")
+	/*Un arreglo contiene un tamaño fijo mientras que los
+	slices pueden tener un tamaño variable
+	*/
+	var arreglo_1 [4]int  // arreglo de 4 enteros
+	arreglo_1[0] = 2
+	arreglo_1[1] = 3
+	arreglo_2 := [5]int{0,1,2,3,4}
+	arreglo_3 := [3][2]int{}  // [[0 0] [0 0] [0 0]]
+	fmt.Println(arreglo_1, len(arreglo_1), cap(arreglo_1))
+	fmt.Println(arreglo_2, len(arreglo_2), cap(arreglo_2))
+	fmt.Println(arreglo_3, len(arreglo_3), cap(arreglo_3))
+	fmt.Println("-----------SLICES-------------")
+	/*Los slices parten de un arreglo*/
+	arreglo_aux := [5]string{"Carlos", "Ana", "Valentina", "Carolina", "Jessica"}
+	slice_1 := arreglo_aux[0:4]
+	slice_1 = append(slice_1, "Miguel")
+	fmt.Println(slice_1, len(slice_1), cap(slice_1))  // len=5, cap=5
+	// Cuando un slice se le agrega más de la capacidad que tiene
+	// en este ejemplo capacidad 5, esa capacidad se duplica
+	slice_1 = append(slice_1, "Stefany")
+	fmt.Println(slice_1, len(slice_1), cap(slice_1))  // len=6, cap=10
+	// Otra forma de declarar slices
+	var slice_2 []float64
+	fmt.Println(slice_2, len(slice_2), cap(slice_2))  // len=0, cap=0
+	slice_2 = append(slice_2, 1.65)
+	fmt.Println(slice_2, len(slice_2), cap(slice_2))  // len=1, cap=1
+	slice_2 = append(slice_2, 2.4)
+	fmt.Println(slice_2, len(slice_2), cap(slice_2))  // len=2, cap=2
+	slice_2 = append(slice_2, 84)
+	fmt.Println(slice_2, len(slice_2), cap(slice_2))  // len=4, cap=4
+	// append a nueva lista
+	newSlice := []float64{8, 9, 10}
+	slice_2 = append(slice_2, newSlice...)  // los ... significa que los desempaqueta
+	fmt.Println(slice_2, len(slice_2), cap(slice_2))
 
 }
