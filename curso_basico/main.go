@@ -9,7 +9,19 @@ import (
 	"log"
 	"math"
 	"strconv"
+	"strings"
 )
+
+
+func esPalindromo(text string) bool {
+	var textReverse string
+	text = strings.ReplaceAll(strings.ToLower(text), " ", "")
+	// Recorremos el string en reversa
+	for i := len(text) - 1; i >= 0; i-- {
+		textReverse += string(text[i])
+	}
+	return text == textReverse
+}
 
 
 func normalFunction(message string) {
@@ -271,7 +283,7 @@ func main() {
 	// for each
 	fmt.Println("---------")
 	listaNumeros := []int{2, 4, 6, 8, 10, 12, 14, 16}
-	// normal
+	// normal solo indices
 	for i := range listaNumeros{
 		fmt.Println(i)
 	}
@@ -384,5 +396,54 @@ func main() {
 	newSlice := []float64{8, 9, 10}
 	slice_2 = append(slice_2, newSlice...)  // los ... significa que los desempaqueta
 	fmt.Println(slice_2, len(slice_2), cap(slice_2))
+
+	/*-------------PALINDROMO CON CICLOS---------------*/
+	fmt.Println("-----------PALINDROMO CON CICLOS-------------")
+	textoPrueba := "Carlos Loaiza"
+	fmt.Println(textoPrueba)
+	fmt.Println(esPalindromo("amor a roma"))
+	fmt.Println(esPalindromo("ama"))
+	fmt.Println(esPalindromo("Ama"))
+	fmt.Println(esPalindromo("A m  a"))
+	fmt.Println(esPalindromo(textoPrueba))
+	// Go no cambia el valor de textoPrueba cuando está en la función
+	fmt.Println(textoPrueba)
+
+	/*-------------Llave valor---------------*/
+	fmt.Println("-----------Llave valor-------------")
+	// En go se llaman maps, en python diccionarios
+	map_1 := make(map[string]int)  // Declarar un map vacío
+	var map_2 map[string]int
+	map_3 := map[string]int{
+		"rsc": 3711,
+		"r":   2138,
+		"gri": 1908,
+		"adg": 912,
+	}
+
+	map_1["José"] = 20
+	map_1["Carlos"] = 30
+	fmt.Println(map_1)
+	fmt.Println(map_2)
+	fmt.Println(map_3)
+	// Recorrer un map
+	for llave, valor := range map_1 {
+		fmt.Println(llave, valor)
+	}
+
+	// tomar datos de diccionario
+	edad1 := map_1["José"]
+	fmt.Println(edad1)
+	// Si se toman datos de una llave inexistente devuelve el cero valor
+	// del valor de diccionario, en este caso el cero valor de int,
+	// es decir 0
+	edad2 := map_1["Messi"]
+	fmt.Println(edad2)
+	// Verificar si hay una llave en el map
+	// La variable ok nos dice true si está, de lo contrario false
+	valor_1, esta_1 := map_1["Messi"]
+	valor_2, esta_2 := map_1["Carlos"]
+	fmt.Println(valor_1, esta_1)
+	fmt.Println(valor_2, esta_2)
 
 }
