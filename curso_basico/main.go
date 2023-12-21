@@ -12,6 +12,15 @@ import (
 	"strings"
 )
 
+// Los structs son formas de crear clases dentro de Go
+// La sintaxis es `type nombre_struct struct`
+type car struct {
+	brand string
+	year  int
+	color string
+	type_ string
+	owner string
+}
 
 func esPalindromo(text string) bool {
 	var textReverse string
@@ -23,23 +32,19 @@ func esPalindromo(text string) bool {
 	return text == textReverse
 }
 
-
 func normalFunction(message string) {
 	fmt.Println(message)
 }
-
 
 // a y b son enteros, es una buena práctica
 func tripleArgument(a, b int, c string) {
 	fmt.Println(a, b, c)
 }
 
-
 // returns
 func returnValue(a int) int {
 	return a * 2
 }
-
 
 // returns multiples
 // aquí estamos diciendo que se devuelven dos valores
@@ -50,27 +55,22 @@ func doubleReturn(a int) (c, d int) {
 	return a, a * 2
 }
 
-
 /*Reto de areas*/
 func calculateCircleArea(r float64) float64 {
 	return math.Pi * math.Pow(r, 2)
 }
 
-
 func calculateRectangleArea(a, b float64) float64 {
 	return a * b
 }
-
 
 func calculateTrapezeArea(B, b, h float64) float64 {
 	return ((B + b) * h) / 2
 }
 
-
 func esPar(n int) bool {
-	return n % 2 == 0
+	return n%2 == 0
 }
-
 
 // la declaración defer apila las declaracinoes
 // en este ejemplo primero se ejecuta Holandas 3
@@ -81,7 +81,6 @@ func declaracion_defer() {
 	defer fmt.Println("Holandas 2")
 	fmt.Println("Holandas 3")
 }
-
 
 func main() {
 
@@ -255,13 +254,13 @@ func main() {
 	// Go solo tiene ciclos for :0
 	// for condicional
 	// i empieza en cero hasta que 9 y se suma de a uno
-	for i := 0; i < 10; i++{
+	for i := 0; i < 10; i++ {
 		fmt.Println(i)
 	}
 	// for while
 	fmt.Println("---------")
 	counter := 0
-	for counter < 10{
+	for counter < 10 {
 		fmt.Println(counter)
 		counter++
 	}
@@ -276,7 +275,7 @@ func main() {
 	}
 
 	fmt.Println("---------")
-	for i := 10; i > 0; i--{
+	for i := 10; i > 0; i-- {
 		fmt.Println(i)
 	}
 
@@ -284,16 +283,16 @@ func main() {
 	fmt.Println("---------")
 	listaNumeros := []int{2, 4, 6, 8, 10, 12, 14, 16}
 	// normal solo indices
-	for i := range listaNumeros{
+	for i := range listaNumeros {
 		fmt.Println(i)
 	}
 	fmt.Println("---------")
-	for _, numero := range listaNumeros{
+	for _, numero := range listaNumeros {
 		fmt.Println(numero)
 	}
 	fmt.Println("---------")
 	// como enumerate de python
-	for i, numero := range listaNumeros{
+	for i, numero := range listaNumeros {
 		fmt.Printf("índice %d número %d\n", i, numero)
 	}
 
@@ -305,7 +304,7 @@ func main() {
 	// Convertir texto a número
 	value, err := strconv.Atoi("20")
 	if err != nil {
-		log.Fatal(err)  // imprimir el error en caso de que lo haya
+		log.Fatal(err) // imprimir el error en caso de que lo haya
 	}
 	fmt.Println("Value:", value)
 	fmt.Println("--------------")
@@ -365,11 +364,11 @@ func main() {
 	/*Un arreglo contiene un tamaño fijo mientras que los
 	slices pueden tener un tamaño variable
 	*/
-	var arreglo_1 [4]int  // arreglo de 4 enteros
+	var arreglo_1 [4]int // arreglo de 4 enteros
 	arreglo_1[0] = 2
 	arreglo_1[1] = 3
-	arreglo_2 := [5]int{0,1,2,3,4}
-	arreglo_3 := [3][2]int{}  // [[0 0] [0 0] [0 0]]
+	arreglo_2 := [5]int{0, 1, 2, 3, 4}
+	arreglo_3 := [3][2]int{} // [[0 0] [0 0] [0 0]]
 	fmt.Println(arreglo_1, len(arreglo_1), cap(arreglo_1))
 	fmt.Println(arreglo_2, len(arreglo_2), cap(arreglo_2))
 	fmt.Println(arreglo_3, len(arreglo_3), cap(arreglo_3))
@@ -378,23 +377,23 @@ func main() {
 	arreglo_aux := [5]string{"Carlos", "Ana", "Valentina", "Carolina", "Jessica"}
 	slice_1 := arreglo_aux[0:4]
 	slice_1 = append(slice_1, "Miguel")
-	fmt.Println(slice_1, len(slice_1), cap(slice_1))  // len=5, cap=5
+	fmt.Println(slice_1, len(slice_1), cap(slice_1)) // len=5, cap=5
 	// Cuando un slice se le agrega más de la capacidad que tiene
 	// en este ejemplo capacidad 5, esa capacidad se duplica
 	slice_1 = append(slice_1, "Stefany")
-	fmt.Println(slice_1, len(slice_1), cap(slice_1))  // len=6, cap=10
+	fmt.Println(slice_1, len(slice_1), cap(slice_1)) // len=6, cap=10
 	// Otra forma de declarar slices
 	var slice_2 []float64
-	fmt.Println(slice_2, len(slice_2), cap(slice_2))  // len=0, cap=0
+	fmt.Println(slice_2, len(slice_2), cap(slice_2)) // len=0, cap=0
 	slice_2 = append(slice_2, 1.65)
-	fmt.Println(slice_2, len(slice_2), cap(slice_2))  // len=1, cap=1
+	fmt.Println(slice_2, len(slice_2), cap(slice_2)) // len=1, cap=1
 	slice_2 = append(slice_2, 2.4)
-	fmt.Println(slice_2, len(slice_2), cap(slice_2))  // len=2, cap=2
+	fmt.Println(slice_2, len(slice_2), cap(slice_2)) // len=2, cap=2
 	slice_2 = append(slice_2, 84)
-	fmt.Println(slice_2, len(slice_2), cap(slice_2))  // len=4, cap=4
+	fmt.Println(slice_2, len(slice_2), cap(slice_2)) // len=4, cap=4
 	// append a nueva lista
 	newSlice := []float64{8, 9, 10}
-	slice_2 = append(slice_2, newSlice...)  // los ... significa que los desempaqueta
+	slice_2 = append(slice_2, newSlice...) // los ... significa que los desempaqueta
 	fmt.Println(slice_2, len(slice_2), cap(slice_2))
 
 	/*-------------PALINDROMO CON CICLOS---------------*/
@@ -412,7 +411,7 @@ func main() {
 	/*-------------Llave valor---------------*/
 	fmt.Println("-----------Llave valor-------------")
 	// En go se llaman maps, en python diccionarios
-	map_1 := make(map[string]int)  // Declarar un map vacío
+	map_1 := make(map[string]int) // Declarar un map vacío
 	var map_2 map[string]int
 	map_3 := map[string]int{
 		"rsc": 3711,
@@ -445,5 +444,15 @@ func main() {
 	valor_2, esta_2 := map_1["Carlos"]
 	fmt.Println(valor_1, esta_1)
 	fmt.Println(valor_2, esta_2)
+
+	/*-------------Structs---------------*/
+	fmt.Println("-----------Structs-------------")
+	// Instanciar con los datos dados
+	myCar := car{brand: "Ford", year: 2020}
+	fmt.Println(myCar)
+	// Instanciar sin datos
+	var otherCar car
+	otherCar.brand = "Chevrolet"
+	fmt.Println(otherCar)
 
 }
