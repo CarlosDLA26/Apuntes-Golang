@@ -10,6 +10,14 @@ import (
 	"math"
 	"strconv"
 	"strings"
+
+	// import alias "modulo importado" el alias sirve para acortar imports
+	pk "curso_basico/src/mypackage"
+
+	// También es posible importar así, para llamar al struct
+	// pc sería solo como pc.pc
+	"curso_basico/src/pc"
+	"curso_basico/src/interfaces"
 )
 
 // Los structs son formas de crear clases dentro de Go
@@ -454,5 +462,52 @@ func main() {
 	var otherCar car
 	otherCar.brand = "Chevrolet"
 	fmt.Println(otherCar)
+	var carPublic pk.CarPublic
+	carPublic.Year = 2020
+	// Esto generaría error porque la primera letra está
+	// en minúscula
+	// carPublic.variablePrivada = " "
+	fmt.Println(carPublic)
+	// Genera error porque es privado
+	// var car2 carPrivate
+	pk.PrintMessage()
+
+	/*-------------Punteros---------------*/
+	fmt.Println("-----------Punteros-------------")
+	fmt.Println("Un puntero es solo la dirección de memoria a una variable")
+	var_a := 10
+	puntero_1 := &var_a // con & accedemos a la dirección de memoria
+	fmt.Println(puntero_1)
+	fmt.Println(*puntero_1) // se accede al valor del puntero
+	*puntero_1 = 20         // modifica el valor de la variable var_a
+	fmt.Println(*puntero_1)
+	fmt.Println(var_a)
+	myPC := pc.Pc{Ram: 16, Disk: 200, Brand: "Lenovo"}
+	fmt.Println(myPC)
+	myPC.Ping()
+	myPC2 := pc.Pc{Ram: 16, Disk: 200, Brand: "MSI"}
+	myPC2.Ping()
+	myPC.DuplicateRAM()
+	fmt.Println(myPC)
+	myPC.DuplicateRAM()
+	fmt.Println(myPC)
+
+	/*-----------Interfaces-------------*/
+	fmt.Println("-----------Interfaces-------------")
+	cuadrado1 := interfaces.Cuadrado{Lado: 2}
+	rectangulo1 := interfaces.Rectangulo{Base: 2, Altura: 3}
+	circulo1 := interfaces.Circulo{Radio: 6}
+	interfaces.CalcularArea(cuadrado1)
+	interfaces.CalcularArea(rectangulo1)
+	interfaces.CalcularArea(circulo1)
+	// Lista de interfaces
+	// Dentro de Go no es posible tener una lista de muchos elementos
+	// de diferente tipo, para simularlo se debe usar una listas de
+	// interfaces
+	listaElementosInterfaz := []interface{}{1, "Hola", 4.5}
+	for _, element := range listaElementosInterfaz {
+		fmt.Printf("%v - %T\n", element, element)
+	}
+	fmt.Println(listaElementosInterfaz)
 
 }
